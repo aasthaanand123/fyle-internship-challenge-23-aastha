@@ -1,5 +1,25 @@
 <!-- style the box -->
-<div class="flex justify-center">
-  <div class="header font-bold text-2xl pb-1 me-3">Username:</div>
-  <div class="data text-2xl">{{ username }}</div>
+<div class="grid md:grid-cols-2 sm:grid-cols-1 mt-5">
+  <div class="sm:mb-3 md:mb-0 md:me-4 flex items-center justify-center">
+    <img
+      class="image rounded-full bg-gray-300 w-28 h-28 md:h-full mx-auto"
+      src="../../../assets/person-placeholder.png"
+    />
+  </div>
+  <div class="details">
+    <!-- username -->
+    <div class="flex sm:justify-center md:justify-start">
+      <div class="header font-bold text-xl pb-1 me-3">Username:</div>
+      <div class="data text-xl">{{ username }}</div>
+    </div>
+    <!--bio  -->
+    <div class="bio text-xl sm:text-center md:text-start">Bio goes here</div>
+    <div class="origin flex text-xl sm:flex sm:justify-center md:justify-start">
+      <div class="icon me-2">🧭</div>
+      <div class="info">Orlando</div>
+    </div>
+    <div class="links text-xl sm:text-center md:text-start">
+      <a href="#"><span class="font-bold">Twitter: </span>www.google.com</a>
+    </div>
+  </div>
 </div>
