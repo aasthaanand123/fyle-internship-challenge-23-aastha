@@ -1,0 +1,26 @@
+<div class="showRepos grid grid-cols-1 md:grid-cols-2 mb-2 md:w-[700px] w-full">
+  <div
+    class="repo border border-2 p-4 mb-4 me-4"
+    *ngFor="
+      let repo of dataSubscription
+        | paginate
+          : { itemsPerPage: pageSize, currentPage: p, totalItems: total }
+    "
+  >
+    <div class="header text-sky-600 font-bold text-lg">
+      {{ repo.name }}
+    </div>
+    <div class="description text-base mt-2">{{ repo.description }}</div>
+    <div
+      *ngIf="repo.language"
+      class="repo-topics text-bold text-white mt-4 font-bold grid grid-cols-1 md:grid-cols-2 text-sm"
+    >
+      <div class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center">
+        {{ repo.language }}
+      </div>
+    </div>
+  </div>
+  <div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

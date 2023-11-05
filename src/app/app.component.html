@@ -1,0 +1,7 @@
+<div>
+  <app-enter-details
+    (showDetailsComp)="hideEnterDetails()"
+    *ngIf="showEnterDetails"
+  ></app-enter-details>
+  <app-show-details *ngIf="!showEnterDetails"></app-show-details>
+</div>
