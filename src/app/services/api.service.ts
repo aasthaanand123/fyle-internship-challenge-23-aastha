@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { Octokit } from 'octokit';
+import { environment } from 'src/environments/environment.token';
 const octokit = new Octokit({
-  auth: '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',
+  auth: environment.authToken,
 });
 @Injectable({
   providedIn: 'root',
