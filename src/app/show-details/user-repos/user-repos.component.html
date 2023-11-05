@@ -1,20 +1,21 @@
-<div class="repo border border-2 p-4">
-  <div class="header text-sky-600 font-bold text-xl">Heroes</div>
-  <div class="description text-lg">Heroes description goes here</div>
+<div class="showRepos grid grid-cols-1 md:grid-cols-2 mb-2 w-5/6">
   <div
-    class="repo-topics text-bold text-white mt-2 font-bold grid grid-cols-1 md:grid-cols-4 text-sm"
+    class="repo border border-2 p-4 mb-4 me-4"
+    *ngFor="let repo of dataSubscription"
   >
-    <div class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center">
-      Javascript
+    <div class="header text-sky-600 font-bold text-xl">
+      {{ repo.name }}
     </div>
-    <div class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center">
-      Angular
-    </div>
-    <div class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center">
-      angularjs
-    </div>
-    <div class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center">
-      Angular 2.0+
+    <div class="description text-base mt-2">{{ repo.description }}</div>
+    <div
+      class="repo-topics text-bold text-white mt-2 font-bold grid grid-cols-1 md:grid-cols-4 text-sm"
+    >
+      <div
+        class="topic p-0.5 bg-cyan-600 rounded-md me-4 text-center"
+        *ngFor="let topic of repo.topics"
+      >
+        {{ topic }}
+      </div>
     </div>
   </div>
 </div>

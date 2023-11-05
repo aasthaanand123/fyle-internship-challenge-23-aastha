@@ -1,10 +1,7 @@
 <div>
   <app-enter-details
-    (showDetailsComp)="hideEnterDetails($event)"
+    (showDetailsComp)="hideEnterDetails()"
     *ngIf="showEnterDetails"
   ></app-enter-details>
-  <app-show-details
-    *ngIf="!showEnterDetails"
-    [username]="username"
-  ></app-show-details>
+  <app-show-details *ngIf="!showEnterDetails"></app-show-details>
 </div>

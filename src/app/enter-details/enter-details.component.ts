@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-enter-details',
@@ -6,9 +7,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./enter-details.component.scss'],
 })
 export class EnterDetailsComponent {
-  username: string = '';
-  @Output() showDetailsComp = new EventEmitter<string>();
+  constructor(private ApiService: ApiService) {}
+  userInfo: any = [];
+
+  username: any = [];
+  @Output() showDetailsComp = new EventEmitter<any>();
   changeComp() {
-    this.showDetailsComp.emit(this.username);
+    this.ApiService.getRepos(this.username);
+    this.ApiService.getUser(this.username);
+    this.showDetailsComp.emit();
   }
 }

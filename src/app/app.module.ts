@@ -7,6 +7,8 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { FormsModule } from '@angular/forms';
 import { userDetailsComponent } from './show-details/user-details/user-details.component';
 import { userReposComponent } from './show-details/user-repos/user-repos.component';
+import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
+import { PaginationComponent } from './pagination/pagination.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,6 +16,8 @@ import { userReposComponent } from './show-details/user-repos/user-repos.compone
     ShowDetailsComponent,
     userDetailsComponent,
     userReposComponent,
+    SkeletonLoaderComponent,
+    PaginationComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [],

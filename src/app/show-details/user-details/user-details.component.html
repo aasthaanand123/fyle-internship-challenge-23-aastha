@@ -10,16 +10,29 @@
     <!-- username -->
     <div class="flex sm:justify-center md:justify-start">
       <div class="header font-bold text-xl pb-1 me-3">Username:</div>
-      <div class="data text-xl">{{ username }}</div>
+      <div class="data text-xl">{{ userInfo.login }}</div>
     </div>
     <!--bio  -->
-    <div class="bio text-xl sm:text-center md:text-start">Bio goes here</div>
-    <div class="origin flex text-xl sm:flex sm:justify-center md:justify-start">
+
+    <div class="bio text-xl sm:text-center md:text-start" *ngIf="userInfo.bio">
+      {{ userInfo.bio }}
+    </div>
+    <div
+      class="origin flex text-xl sm:flex sm:justify-center md:justify-start"
+      *ngIf="userInfo.location"
+    >
       <div class="icon me-2">🧭</div>
       <div class="info">Orlando</div>
     </div>
-    <div class="links text-xl sm:text-center md:text-start">
-      <a href="#"><span class="font-bold">Twitter: </span>www.google.com</a>
+    <div
+      class="links text-xl sm:text-center md:text-start"
+      *ngIf="userInfo.twitter_username"
+    >
+      <a href="#"
+        ><span class="font-bold">Twitter: </span>www.twitter.com/{{
+          userInfo.twitter_username
+        }}</a
+      >
     </div>
   </div>
 </div>

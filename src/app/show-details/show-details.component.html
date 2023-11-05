@@ -1,9 +1,13 @@
 <div class="flex flex-col justify-start items-center m-2.5 h-full">
-  <app-user-details [username]="username" class="mb-4"></app-user-details>
-  <div class="showRepos grid grid-cols-2 mb-2">
-    <app-user-repos
-      *ngFor="let _ of [1, 2, 3, 4, 5]"
-      class="mb-2 me-4"
-    ></app-user-repos>
+  <div
+    *ngIf="showDetailsLoading && showReposLoading; else showData"
+    class="flex items-center h-90 justify-center"
+  >
+    <app-skeleton-loader></app-skeleton-loader>
   </div>
+  <ng-template #showData>
+    <app-user-details class="mb-4"></app-user-details>
+    <app-user-repos class="flex justify-center mt-3"></app-user-repos>
+    <app-pagination></app-pagination>
+  </ng-template>
 </div>
