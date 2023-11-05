@@ -12,6 +12,7 @@ export class userDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.ApiService.details$.subscribe((details) => {
       this.userInfo = details;
+      console.log(this.userInfo);
     });
   }
 }

@@ -3,7 +3,7 @@
   <div class="sm:mb-3 md:mb-0 md:me-4 flex items-center justify-center">
     <img
       class="image rounded-full bg-gray-300 w-28 h-28 md:h-full mx-auto"
-      src="../../../assets/person-placeholder.png"
+      [src]="userInfo.avatar_url"
     />
   </div>
   <div class="details">
@@ -22,7 +22,7 @@
       *ngIf="userInfo.location"
     >
       <div class="icon me-2">🧭</div>
-      <div class="info">Orlando</div>
+      <div class="info">{{ userInfo.location }}</div>
     </div>
     <div
       class="links text-xl sm:text-center md:text-start"

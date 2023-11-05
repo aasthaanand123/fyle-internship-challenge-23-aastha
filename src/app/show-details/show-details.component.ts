@@ -8,18 +8,31 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ShowDetailsComponent implements OnInit {
   constructor(private ApiService: ApiService) {}
-  showDetailsLoading: boolean = true;
-  showReposLoading: boolean = true;
   userInfo: any = '';
+  show: boolean = false;
   dataSubscription: any = '';
   ngOnInit(): void {
     this.ApiService.details$.subscribe((details) => {
       this.userInfo = details;
-      this.showDetailsLoading = false;
+      if (
+        this.ApiService.showDetailsLoading &&
+        this.ApiService.showReposLoading
+      ) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
     });
     this.ApiService.repositories$.subscribe((repositories) => {
       this.dataSubscription = repositories;
-      this.showReposLoading = false;
+      if (
+        this.ApiService.showDetailsLoading &&
+        this.ApiService.showReposLoading
+      ) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
     });
   }
 }

@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { Octokit } from 'octokit';
 const octokit = new Octokit({
-  auth: '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',
+  auth: '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',
 });
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
+  showDetailsLoading: boolean = true;
+  showReposLoading: boolean = true;
   // observable for repositories
   private repositoriesSubject: BehaviorSubject<any[]> = new BehaviorSubject<
     any[]
@@ -24,6 +26,7 @@ export class ApiService {
       .get(`https://api.github.com/users/${githubUsername}`)
       .subscribe((data) => {
         this.userDetails.next(data);
+        this.showDetailsLoading = false;
       });
   }
 
@@ -31,14 +34,13 @@ export class ApiService {
     await octokit
       .request(`GET /users/${githubUsername}/repos`, {
         username: githubUsername,
-        per_page: 10,
         headers: {
           'X-GitHub-Api-Version': '2022-11-28',
         },
       })
       .then((data) => {
         this.repositoriesSubject.next(data.data);
+        this.showReposLoading = false;
       });
   }
 }
-// maintain pagination

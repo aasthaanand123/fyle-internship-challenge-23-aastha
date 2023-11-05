@@ -7,9 +7,15 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class userReposComponent implements OnInit {
   dataSubscription: any = '';
+  pageSize: number = 10;
+  p: number = 1;
+  total: number = 0;
   ngOnInit(): void {
     this.ApiService.repositories$.subscribe((repositories) => {
       this.dataSubscription = repositories;
+      this.total = repositories.length;
+      console.log(repositories);
+      console.log(repositories.length);
     });
   }
   constructor(private ApiService: ApiService) {}

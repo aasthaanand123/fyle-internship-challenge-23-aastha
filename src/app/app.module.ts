@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { userDetailsComponent } from './show-details/user-details/user-details.component';
 import { userReposComponent } from './show-details/user-repos/user-repos.component';
 import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
-import { PaginationComponent } from './pagination/pagination.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +17,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     userDetailsComponent,
     userReposComponent,
     SkeletonLoaderComponent,
-    PaginationComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
 })

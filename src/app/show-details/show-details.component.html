@@ -1,6 +1,6 @@
 <div class="flex flex-col justify-start items-center m-2.5 h-full">
   <div
-    *ngIf="showDetailsLoading && showReposLoading; else showData"
+    *ngIf="show; else showData"
     class="flex items-center h-90 justify-center"
   >
     <app-skeleton-loader></app-skeleton-loader>
@@ -8,6 +8,5 @@
   <ng-template #showData>
     <app-user-details class="mb-4"></app-user-details>
     <app-user-repos class="flex justify-center mt-3"></app-user-repos>
-    <app-pagination></app-pagination>
   </ng-template>
 </div>
