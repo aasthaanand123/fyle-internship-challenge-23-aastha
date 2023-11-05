@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { Octokit } from 'octokit';
-import { environment } from 'src/environments/environment.token';
+import { environment } from 'src/environments/environment.prod';
 const octokit = new Octokit({
-  auth: environment.authToken,
+  auth: environment.githubToken,
 });
 @Injectable({
   providedIn: 'root',
@@ -23,8 +23,11 @@ export class ApiService {
   details$: Observable<any> = this.userDetails.asObservable();
 
   getUser(githubUsername: string) {
+    const headers = new HttpHeaders({
+      Authorization: `token ${environment.githubToken}`,
+    });
     this.httpClient
-      .get(`https://api.github.com/users/${githubUsername}`)
+      .get(`https://api.github.com/users/${githubUsername}`, { headers })
       .subscribe((data) => {
         this.userDetails.next(data);
         this.showDetailsLoading = false;
